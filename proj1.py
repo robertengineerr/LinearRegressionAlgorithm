@@ -8,25 +8,39 @@ from regression import gradient_descent
 
 def runProj1(fileName, outputFileName, alpha, iterations):
     df = pd.read_csv(fileName, na_values="########")
-
     df = clean_empty(df)
     
-    X = df[['X1', 'X2', 'X3']].values
+    X_vars = ['X1', 'X2', 'X3']
     y = df['Y'].values
-    
-    X = np.column_stack((np.ones(X.shape[0]), X))  # adding a column of ones for the intercept. required for the linear regression formula
-    
-    #parameters
-    theta_initial = np.zeros(X.shape[1])  # initial values for theta
-    
-    theta_final, cost_history = gradient_descent(X, y, theta_initial, alpha, iterations)
-    
-    cost_df = pd.read_csv("cost_history.csv")
-    plt.plot(cost_df['Iteration'], cost_df['Cost'])  # plotting the cost over iterations
-    plt.xlabel('Iteration')
-    plt.ylabel('Cost')
-    plt.title(f'Cost History during Gradient Descent\nα = {alpha}, Iterations = {iterations}')
-    plt.savefig(outputFileName+".png")
+
+    plt.figure(figsize=(12, 10))
+
+    for i, var in enumerate(X_vars):
+        X = df[[var]].values
+        X = np.column_stack((np.ones(X.shape[0]), X))  # adding column of ones for the intercept
+
+        theta_initial = np.zeros(X.shape[1])  
+        theta_final, cost_history = gradient_descent(X, y, theta_initial, alpha, iterations)
+
+        # regression model
+        plt.subplot(3, 2, 2 * i + 1)
+        plt.scatter(df[var], y, color='blue', label="Actual Data")
+        plt.plot(df[var], np.dot(X, theta_final), color='red', label="Predicted")
+        plt.xlabel(var)
+        plt.ylabel("Y")
+        plt.title(f"Regression Model for {var}")
+        plt.legend()
+
+        # loss over iterations
+        plt.subplot(3, 2, 2 * i + 2)
+        plt.plot(range(1, iterations + 1), cost_history, linestyle='-')
+        plt.xlabel("Iterations")
+        plt.ylabel("Cost")
+        plt.title(f"Loss Over Iterations ({var})")
+        plt.grid(True)
+
+    plt.tight_layout()
+    plt.savefig(outputFileName + ".png")
     
     print("final theta values:", theta_final)
     return
