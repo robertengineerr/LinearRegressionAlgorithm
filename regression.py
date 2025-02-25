@@ -4,7 +4,6 @@ import numpy as np
 def gradient_descent(x, y, theta, learning_rate, iterations):
     cost_history=[]
 
-    # steps
     for i in range(iterations):
         h_theta = np.dot(x, theta)  # dot product of x and theta
         error = h_theta - y  # distance between h and y for error correction
