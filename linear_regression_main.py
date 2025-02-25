@@ -12,8 +12,11 @@ fileName="D3.csv"
 alpha=0.05
 iterations = 1000
 outputFileName = ''
-
 whichProj=0
+def help():
+    with open("help.txt", "r") as file:
+        print(file.read())
+    return
 
 if len(sys.argv) > 1:
     for i in range(1, len(sys.argv)):
@@ -33,10 +36,7 @@ if len(sys.argv) > 1:
             if i + 1 < len(sys.argv):
                 whichProj = int(sys.argv[i+1])
         elif sys.argv[i] == "--help":
-            print("-a   Alpha value (learning rate)")
-            print("-i   Number of iterations")
-            print("-f   Input csv file name")
-            print("-o   Output plot file name")
+            help()
 
 if whichProj==1:
     print("Project 1: ")
@@ -48,3 +48,5 @@ elif whichProj==2:
     if outputFileName=='':
         outputFileName='project_2_plot'
     runProj2(fileName, outputFileName, alpha, iterations)
+else:
+    help()

@@ -1,0 +1,6 @@
+Parameters:
+-p   Project part                    1 or 2
+-a   Alpha value (learning rate)     Default: 0.05
+-i   Number of iterations            Default: 1000
+-f   Input csv file name             Default: D3.csv
+-o   Output plot png file name       Defaults: project_1_plot, project_2_plot
