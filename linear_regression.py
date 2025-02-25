@@ -13,7 +13,7 @@ alpha=0.05
 iterations = 1000
 outputFileName = ''
 
-whichProj=1
+whichProj=0
 
 if len(sys.argv) > 1:
     for i in range(1, len(sys.argv)):
