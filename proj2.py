@@ -56,6 +56,7 @@ def runProj2(fileName, outputFileName, alpha, iterations):
     
     print("final theta values:", theta_final)
 
+    #these are the values required by the assignment so I just hardcoded them in
     X_new_values = [
         [1, 1, 1],
         [2, 0, 4],
