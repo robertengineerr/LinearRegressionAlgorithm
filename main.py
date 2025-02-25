@@ -11,7 +11,7 @@ from proj2 import runProj2
 fileName="D3.csv"
 alpha=0.05
 iterations = 1000
-outputFileName = 'cost_history_plot'
+outputFileName = ''
 
 whichProj=1
 
@@ -39,8 +39,12 @@ if len(sys.argv) > 1:
             print("-o   Output plot file name")
 
 if whichProj==1:
-    print("Project 1")
+    print("Project 1: ")
+    if outputFileName=='':
+        outputFileName='project_1_plot'
     runProj1(fileName, outputFileName, alpha, iterations)
 elif whichProj==2:
-    print("Project 2")
+    print("Project 2: ")
+    if outputFileName=='':
+        outputFileName='project_2_plot'
     runProj2(fileName, outputFileName, alpha, iterations)

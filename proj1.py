@@ -19,7 +19,7 @@ def runProj1(fileName, outputFileName, alpha, iterations):
     #parameters
     theta_initial = np.zeros(X.shape[1])  # initial values for theta
     
-    theta_final = gradient_descent(X, y, theta_initial, alpha, iterations)
+    theta_final, cost_history = gradient_descent(X, y, theta_initial, alpha, iterations)
     
     cost_df = pd.read_csv("cost_history.csv")
     plt.plot(cost_df['Iteration'], cost_df['Cost'])  # plotting the cost over iterations
