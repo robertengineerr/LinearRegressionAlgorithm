@@ -6,6 +6,7 @@ import sys
 from cleaning import clean_empty
 from regression import gradient_descent
 from proj1 import runProj1
+from proj2 import runProj2
 
 fileName="D3.csv"
 alpha=0.05
@@ -38,7 +39,8 @@ if len(sys.argv) > 1:
             print("-o   Output plot file name")
 
 if whichProj==1:
+    print("Project 1")
     runProj1(fileName, outputFileName, alpha, iterations)
 elif whichProj==2:
-    print("Not done yet")
-    #runProj2()
+    print("Project 2")
+    runProj2(fileName, outputFileName, alpha, iterations)

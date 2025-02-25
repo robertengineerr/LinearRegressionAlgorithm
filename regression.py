@@ -18,4 +18,9 @@ def gradient_descent(x, y, theta, learning_rate, iterations):
     cost_df = pd.DataFrame({"Iteration": np.arange(1, iterations + 1), "Cost": cost_history})
     cost_df.to_csv('cost_history.csv', index=False)
     
-    return theta
+    return theta, cost_history
+    
+def predict(theta, X_new):
+    X_new = np.insert(X_new, 0, 1)
+    y_pred = np.dot(theta, X_new)
+    return y_pred
