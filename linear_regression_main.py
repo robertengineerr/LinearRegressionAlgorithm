@@ -35,7 +35,6 @@ if len(sys.argv) > 1:
         elif sys.argv[i]=="-p":
             if i + 1 < len(sys.argv):
                 whichProj = int(sys.argv[i+1])
-        elif sys.argv[i] == "--help":
 
 if whichProj==1:
     print("Project 1: ")
