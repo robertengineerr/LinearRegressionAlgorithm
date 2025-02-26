@@ -43,4 +43,16 @@ def runProj1(fileName, outputFileName, alpha, iterations):
     plt.savefig(outputFileName + ".png")
     
     print("final theta values:", theta_final)
+    
+    final_losses = {}
+
+    for i, var in enumerate(X_vars):
+        theta_initial = np.zeros(X.shape[1])  
+        theta_final, cost_history = gradient_descent(X, y, theta_initial, alpha, iterations)
+        
+        final_losses[var] = cost_history[-1]  #store final loss as array
+    
+    best_var = min(final_losses, key=final_losses.get)
+    print(f"The best explanatory variable is {best_var} with the lowest final loss: {final_losses[best_var]}")
+
     return
